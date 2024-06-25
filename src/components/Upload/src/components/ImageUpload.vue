@@ -63,7 +63,6 @@
   const fileList = ref<UploadProps['fileList']>([]);
   const isLtMsg = ref<boolean>(true);
   const isActMsg = ref<boolean>(true);
-  const isFirstRender = ref<boolean>(true)
 
   watch(
     () => props.value,
@@ -94,11 +93,11 @@
           }
         }) as UploadProps['fileList'];
       }
+      const value = getValue();
+      isInnerOperate.value = true;
       emit('update:value', value);
-      if(!isFirstRender.value){
-        emit('change', value);
-        isFirstRender.value = false
-      }
+      isInnerOperate.value = true;
+      emit('change', value);
     },
     { 
       immediate: true, 
